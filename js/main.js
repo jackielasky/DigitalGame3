@@ -16,37 +16,56 @@ window.onload = function() {
     var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
-        // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/phaser.png' );
+            game.load.image( 'night', 'assets/night1.png' );
+            game.load.sprite('jar','assets/jar1');
+            game.load.image('frog', 'assets/frog.png');
+            game.load.image('spdier', 'assets/spider.png');
+            game.load.image('toad', 'assets/toad.png');
+            game.load.image('bat', 'assets/bat.png');
+            game.load.image('rat', 'assets/rat.png');
+            game.load.image('bird', 'assets/bird.png');
     }
     
-    var bouncy;
+    //enemies
+    var enemies, cursors;
+    var frog;
+    var spider;
+    var toad;
+    var bat;
+    var rat;
+    var bird;
+    
+
+    var jar;
+        
     
     function create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        bouncy.anchor.setTo( 0.5, 0.5 );
+        //background
+        game.add.sprite(0, 0, 'night');
         
-        // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        bouncy.body.collideWorldBounds = true;
+        //enemies
+        frog = game.add.sprite(0, 0, 'frog');
+        spider = game.add.sprite(0, 0, 'spider');
+        toad = game.add.sprite(0, 0, 'toad');
+        bat = game.add.sprite(0, 0, 'bat');
+        rat = game.add.sprite(0, 0, 'rat');
+        bird = game.add.sprite(0, 0, 'bird');
         
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something awesome.", style );
-        text.anchor.setTo( 0.5, 0.0 );
+        //add the "enemies" that are bad objects to collect, to a group.
+        enemies.add(frog);
+        enemies.add(spider);
+        enemies.add(toad);
+        enemies.add(bat);
+        enemies.add(rat);
+        enemies.add(bird);
+        
+        
+       
+      
     }
     
     function update() {
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
+      
+       
     }
 };
