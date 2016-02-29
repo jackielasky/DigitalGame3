@@ -25,7 +25,7 @@ window.onload = function() {
         game.load.image('lid','assets/lid2.png');
         game.load.image('heart','assets/heart1.png');
         game.load.image('jar1','assets/jars/one.png');
-        game.load.audio();
+      //  game.load.audio();
         
     }
     
